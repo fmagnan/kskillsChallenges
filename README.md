@@ -1,4 +1,6 @@
 kskillsChallenges
 =================
 
-this project compiles challenges found on http://www.kskills.com
+this project compiles challenges found on various websites as
+ * http://www.kskills.com
+ * http://www.codingame.com
