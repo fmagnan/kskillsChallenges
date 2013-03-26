@@ -1,4 +1,4 @@
-kskillsChallenges
+Coding Challenges
 =================
 
 this project compiles challenges found on various websites as
