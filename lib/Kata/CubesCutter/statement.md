@@ -32,14 +32,17 @@ et NB représente le nombre de cubes qui pourront être produits.
  
 T et NB sont des nombres entiers positifs.
 Exemple
-Entrée
+-------
+**Entrée**
 
+```csv
 2
 4;2;2
 1;1;1
+```
+**Sortie**
 
-Sortie
-
+```csv
 1;17
-
+```
 [Symfony Live Paris]: http://paris2013.live.symfony.com/
