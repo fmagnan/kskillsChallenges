@@ -20,14 +20,10 @@ class Chainsaw
      */
     private function gcd($a, $b)
     {
-        if ($a == 0 || $b == 0)
-            return abs(max(abs($a), abs($b)));
-
+        if ($a == 0) return abs($b);
+        if ($b == 0) return abs($a);
         $r = $a % $b;
-
-        return ($r != 0) ?
-            $this->gcd($b, $r) :
-            abs($b);
+        return $this->gcd($b, $r);
     }
 
     /*
@@ -36,13 +32,11 @@ class Chainsaw
      * gets greatest common divisor among
      * an array of numbers
      */
-    private function gcd_array($array, $a = 0)
+    private function gcd_array($array)
     {
-        $b = array_pop($array);
-
-        return ($b === null) ?
-            (int) $a :
-            $this->gcd_array($array, $this->gcd($a, $b));
+        return array_reduce($array, function($result, $item) {
+            return $this->gcd($result, $item);
+        });
     }
 
     /**
@@ -52,7 +46,9 @@ class Chainsaw
 
     private function getPieceVolume(array $piece)
     {
-        return (int) $piece[0] * $piece[1] * $piece[2];
+        return array_reduce($piece, function($result, $item) {
+            return $result * $item;
+        }, 1);
     }
 
     public function start($stdin)
@@ -61,7 +57,7 @@ class Chainsaw
         unset($uselessFirstLine);
 
         $totalVolume = 0;
-        $minimumCubeSide = 100;
+        $minimumCubeSides = array();
 
         while (false !== ($line = fgets($stdin))) {
             $woodPiece = array();
@@ -69,12 +65,12 @@ class Chainsaw
                 $woodPiece[] = (int) $dimension;
             }
 
-            $minimumCubeSide = min($minimumCubeSide, $this->gcd_array($woodPiece));
-
+            $minimumCubeSides[ ] = $this->gcd_array($woodPiece);
             $totalVolume += $this->getPieceVolume($woodPiece);
         }
+        $minimumCubeSide = $this->gcd_array($minimumCubeSides);
 
-        $this->stdout=$minimumCubeSide . ';' . $totalVolume / pow($minimumCubeSide, 3);
+        $this->stdout = $minimumCubeSide . ';' . $totalVolume / pow($minimumCubeSide, 3);
     }
 
     public function out()
