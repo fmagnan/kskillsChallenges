@@ -1,7 +1,9 @@
 <?php
 
 require_once __DIR__.'/../lib/Kata/CubesCutter/Chainsaw.php';
+require_once __DIR__.'/../lib/Kata/CubesCutter/WrongUniverseException.php';
 use Kata\CubesCutter\Chainsaw;
+use Kata\CubesCutter\WrongUniverseException;
 
 class ChainsawTest extends \PHPUnit_Framework_TestCase
 {
@@ -38,5 +40,11 @@ class ChainsawTest extends \PHPUnit_Framework_TestCase
     {
         $this->object->start(fopen(__DIR__.'/resources/aLotOfPieces.txt','r'));
         $this->assertEquals('3;64772',$this->object->out());
+    }
+
+    public function testWrongFormatEntry()
+    {
+        $this->setExpectedException( 'Kata\\CubesCutter\\WrongUniverseException' );
+        $this->object->start(fopen(__DIR__.'/resources/wrongFormatEntry.txt','r'));
     }
 }
