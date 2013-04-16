@@ -4,7 +4,7 @@ namespace Kata\CubesCutter;
 
 class Chainsaw
 {
-    private $numberOfDimmensions = 3;
+    private $numberOfDimensions = 3;
     private $stdout;
 
     /**
@@ -70,7 +70,7 @@ class Chainsaw
                 $woodPiece[] = (int) $dimension;
             }
 
-            if ($this->numberOfDimmensions !== count($woodPiece)) {
+            if ($this->numberOfDimensions !== count($woodPiece)) {
                 throw new WrongUniverseException("This is not the universe that you are looking for");   
             }
 
