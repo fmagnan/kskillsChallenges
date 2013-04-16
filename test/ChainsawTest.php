@@ -43,6 +43,6 @@ class ChainsawTest extends \PHPUnit_Framework_TestCase
     public function testGcdBetweenPiecesAreOne()
     {
         $this->object->start(fopen(__DIR__.'/resources/gcdBetweenPiecesAreOne.txt','r'));
-        $this->assertEquals('1;25',$this->object->out());
+        $this->assertEquals('1;91',$this->object->out());
     }
 }
