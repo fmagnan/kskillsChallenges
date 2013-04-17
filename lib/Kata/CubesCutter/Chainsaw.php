@@ -4,6 +4,7 @@ namespace Kata\CubesCutter;
 
 class Chainsaw
 {
+    private $numberOfDimensions = 3;
     private $stdout;
 
     /**
@@ -63,6 +64,10 @@ class Chainsaw
             $woodPiece = array();
             foreach (explode(';', $line) as $dimension) {
                 $woodPiece[] = (int) $dimension;
+            }
+
+            if ($this->numberOfDimensions !== count($woodPiece)) {
+                throw new WrongUniverseException("This is not the universe that you are looking for");   
             }
 
             $minimumCubeSides[ ] = $this->gcd_array($woodPiece);
