@@ -1,6 +1,5 @@
 <?php
 
-require_once __DIR__.'/../lib/Kata/CubesCutter/Chainsaw.php';
 use Kata\CubesCutter\Chainsaw;
 
 class ChainsawTest extends \PHPUnit_Framework_TestCase
