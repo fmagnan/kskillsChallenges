@@ -1,7 +1,6 @@
 <?php
 
-require_once __DIR__.'/../lib/Kata/CubesCutter/Chainsaw.php';
-require_once __DIR__.'/../lib/Kata/CubesCutter/WrongUniverseException.php';
+namespace Kata\CubesCutter;
 
 use Kata\CubesCutter\Chainsaw;
 use Kata\CubesCutter\WrongUniverseException;
@@ -19,39 +18,62 @@ class ChainsawTest extends \PHPUnit_Framework_TestCase
         $this->object = new Chainsaw();
     }
 
-    public function testSample()
+    protected function start($fileName)
     {
-        $this->object->start(fopen(__DIR__.'/resources/sample.txt','r'));
+        $this->object->start(fopen(__DIR__.'/../../../resources/'.$fileName,'r'));
+    }
+
+    /**
+     * @test
+     */
+    public function sample()
+    {
+        $this->start('sample.txt');
         $this->assertEquals('1;17',$this->object->out());
     }
 
-    public function testOnlyOnePiece()
+    /**
+     * @test
+     */
+    public function onlyOnePiece()
     {
-        $this->object->start(fopen(__DIR__.'/resources/onlyOnePiece.txt','r'));
+        $this->start('onlyOnePiece.txt');
         $this->assertEquals('5;1',$this->object->out());
     }
 
+    /**
+     * @test
+     */
     public function testVariousPieces()
     {
-        $this->object->start(fopen(__DIR__.'/resources/variousPieces.txt','r'));
+        $this->start('variousPieces.txt');
         $this->assertEquals('4;112',$this->object->out());
     }
 
-    public function testALotOfPieces()
+    /**
+     * @test
+     */
+    public function aLotOfPieces()
     {
-        $this->object->start(fopen(__DIR__.'/resources/aLotOfPieces.txt','r'));
+        $this->start('aLotOfPieces.txt');
         $this->assertEquals('3;64772',$this->object->out());
     }
 
-    public function testWrongFormatEntry()
+    /**
+     * @test
+     */
+    public function wrongFormatEntry()
     {
         $this->setExpectedException( 'Kata\\CubesCutter\\WrongUniverseException' );
-        $this->object->start(fopen(__DIR__.'/resources/wrongFormatEntry.txt','r'));
+        $this->start('wrongFormatEntry.txt');
     }
 
-    public function testGcdBetweenPiecesAreOne()
+    /**
+     * @test
+     */
+    public function gcdBetweenPiecesAreOne()
     {
-        $this->object->start(fopen(__DIR__.'/resources/gcdBetweenPiecesAreOne.txt','r'));
+        $this->start('gcdBetweenPiecesAreOne.txt');
         $this->assertEquals('1;91',$this->object->out());
     }
 }
