@@ -6,7 +6,7 @@ class Chainsaw
 {
     private $numberOfDimensions = 3;
     private $stdout;
-
+    
     /**
      * gcd functions picked up from
      * http://www.php.net/manual/en/function.gmp-gcd.php
@@ -42,7 +42,7 @@ class Chainsaw
 
     /**
      * @param  array parallelepipedic $piece of wood
-     * @return int                    volume
+     * @return int volume
      */
 
     private function getPieceVolume(array $piece)
