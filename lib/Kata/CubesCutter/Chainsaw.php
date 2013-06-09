@@ -2,11 +2,19 @@
 
 namespace Kata\CubesCutter;
 
+use Kata\Resource\Parser;
+
 class Chainsaw
 {
     private $numberOfDimensions = 3;
-    private $stdout;
-    
+    private $parser;
+    private $result;
+
+    public function __construct()
+    {
+        $this->parser = new Parser();
+    }
+
     /**
      * gcd functions picked up from
      * http://www.php.net/manual/en/function.gmp-gcd.php
@@ -54,15 +62,15 @@ class Chainsaw
 
     public function start($stdin)
     {
-        $uselessFirstLine = fgets($stdin);
-        unset($uselessFirstLine);
+        $lines = $this->parser->read($stdin);
+        $uselessFirstLine = array_shift($lines);
 
         $totalVolume = 0;
         $minimumCubeSides = array();
 
-        while (false !== ($line = fgets($stdin))) {
+        foreach($lines as $line) {
             $woodPiece = array();
-            foreach (explode(';', $line) as $dimension) {
+            foreach ($line as $dimension) {
                 $woodPiece[] = (int) $dimension;
             }
 
@@ -75,11 +83,11 @@ class Chainsaw
         }
         $minimumCubeSide = $this->gcd_array($minimumCubeSides);
 
-        $this->stdout = $minimumCubeSide . ';' . $totalVolume / pow($minimumCubeSide, 3);
+        $this->result = array($minimumCubeSide, $totalVolume / pow($minimumCubeSide, 3));
     }
 
     public function out()
     {
-        return $this->stdout;
+        return $this->parser->out($this->result);
     }
 }

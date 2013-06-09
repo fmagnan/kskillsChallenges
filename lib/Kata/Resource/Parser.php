@@ -4,15 +4,20 @@ namespace Kata\Resource;
 
 class Parser
 {
-    const LINE_SEPARATOR=';';
+    const LINE_SEPARATOR = ';';
 
     public function read($resource)
     {
-        $lines=array();
+        $lines = array();
         while (false !== ($line = fgets($resource))) {
-            $arrayLine=explode(';', $line);
-            $lines[]=$arrayLine;
+            $arrayLine = explode(self::LINE_SEPARATOR, $line);
+            $lines[] = $arrayLine;
         }
         return $lines;
+    }
+
+    public function out(array $line)
+    {
+        return implode(self::LINE_SEPARATOR, $line);
     }
 }
