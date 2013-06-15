@@ -2,9 +2,6 @@
 
 namespace Kata\CubesCutter;
 
-use Kata\CubesCutter\Chainsaw;
-use Kata\CubesCutter\WrongUniverseException;
-
 class ChainsawTest extends \PHPUnit_Framework_TestCase
 {
     protected $object;
