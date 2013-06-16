@@ -22,16 +22,21 @@ class Node
 
     public function addNeighbour(Node $new)
     {
-        $newNodeIsUnknown = true;
-        foreach ($this->neighbours as $neighbour) {
-            if ($neighbour->isSameThan($new)) {
-                $newNodeIsUnknown = false;
-            }
-        }
-        if ($newNodeIsUnknown) {
+        if ($this->isNewNodeStranger($new)) {
             $this->neighbours[] = $new;
             $new->addNeighbour($this);
         }
+    }
+
+    public function isNewNodeStranger(Node $new)
+    {
+        foreach ($this->neighbours as $neighbour) {
+            if ($neighbour->isSameThan($new)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public function seekFor(Node $wanted, array $knownNodes = array(), $distance = 1)
