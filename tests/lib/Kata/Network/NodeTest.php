@@ -1,6 +1,6 @@
 <?php
 
-namespace Kata\Whaller;
+namespace Kata\Network;
 
 class NodeTest extends \PHPUnit_Framework_TestCase
 {

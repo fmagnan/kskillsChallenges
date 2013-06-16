@@ -9,6 +9,6 @@ this project compiles challenges (and solutions) found on various websites as
 
 ## Statements
 
- * [cubes cutter](/statements/cubesCutter.md) (from blablacar)
- * distance within two nodes in a network (from whaller)
- * calendar organizer (from )
+ * [cubes cutter](/statements/cubesCutter.md) (from [blablacar](http://www.blablacar.com))
+ * [distance within two nodes in a network](/statements/network.md) (from [whaller](https://whaller.com))
+ * [calendar organizer](/statements/calendar.md) (from [toog](http://www.toog.fr)) **_Work in progress ..._**
