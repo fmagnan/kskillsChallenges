@@ -17,7 +17,7 @@ class ChainsawTest extends \PHPUnit_Framework_TestCase
 
     protected function start($fileName)
     {
-        $this->object->start(fopen(__DIR__.'/../../../resources/CubesCutter/'.$fileName,'r'));
+        $this->object->start(fopen(__DIR__.'/../../resources/CubesCutter/'.$fileName,'r'));
     }
 
     /**

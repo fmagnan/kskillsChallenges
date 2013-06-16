@@ -13,7 +13,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase
 
     protected function read($filename)
     {
-        return $this->parser->read(fopen(__DIR__.'/../../../resources/'.$filename,'r'));
+        return $this->parser->read(fopen(__DIR__.'/../../resources/'.$filename,'r'));
     }
 
     /**
