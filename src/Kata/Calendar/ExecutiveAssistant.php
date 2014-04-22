@@ -4,7 +4,6 @@ namespace Kata\Calendar;
 
 class ExecutiveAssistant
 {
-
     public function computeMaxEventsToBeIn(array $events = array())
     {
         $max = 0;
@@ -17,5 +16,4 @@ class ExecutiveAssistant
         }
         return $max;
     }
-
 }

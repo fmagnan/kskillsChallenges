@@ -22,5 +22,4 @@ class Event
     {
         return $this->start <= $event->end and $this->end >= $event->start;
     }
-
 }

@@ -21,13 +21,13 @@ class Chainsaw
      */
 
     /*
-     * function gcd()
+     * function greatestCommonDivisor()
      *
      * returns greatest common divisor
      * between two numbers
      * tested against gmp_gcd()
      */
-    private function gcd($a, $b)
+    private function greatestCommonDivisor($a, $b)
     {
         if ($a == 0) {
             return abs($b);
@@ -36,7 +36,7 @@ class Chainsaw
             return abs($a);
         }
         $r = $a % $b;
-        return $this->gcd($b, $r);
+        return $this->greatestCommonDivisor($b, $r);
     }
 
     /*
@@ -45,12 +45,12 @@ class Chainsaw
      * gets greatest common divisor among
      * an array of numbers
      */
-    private function gcd_array($array)
+    private function greatestCommonDivisorFromArray($array)
     {
         return array_reduce(
             $array,
             function ($result, $item) {
-                return $this->gcd($result, $item);
+                return $this->greatestCommonDivisor($result, $item);
             }
         );
     }
@@ -89,10 +89,10 @@ class Chainsaw
                 throw new WrongUniverseException("This is not the universe that you are looking for");
             }
 
-            $minimumCubeSides[] = $this->gcd_array($woodPiece);
+            $minimumCubeSides[] = $this->greatestCommonDivisorFromArray($woodPiece);
             $totalVolume += $this->getPieceVolume($woodPiece);
         }
-        $minimumCubeSide = $this->gcd_array($minimumCubeSides);
+        $minimumCubeSide = $this->greatestCommonDivisorFromArray($minimumCubeSides);
 
         $this->result = array($minimumCubeSide, $totalVolume / pow($minimumCubeSide, 3));
     }

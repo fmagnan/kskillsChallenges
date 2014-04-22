@@ -42,5 +42,4 @@ class ParserTest extends \PHPUnit_Framework_TestCase
         $result = $this->read('severalValuesOnFirstLine.txt');
         $this->assertEquals(array('winter', 'is', 'coming'), $result[0]);
     }
-
 }

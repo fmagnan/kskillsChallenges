@@ -65,5 +65,4 @@ class Node
     {
         return (string)$this === (string)$other;
     }
-
 }

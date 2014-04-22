@@ -12,5 +12,4 @@ class ExecutiveAssistantTest extends \PHPUnit_Framework_TestCase
         $assistant = new ExecutiveAssistant();
         $this->assertEquals(0, $assistant->computeMaxEventsToBeIn());
     }
-
 }

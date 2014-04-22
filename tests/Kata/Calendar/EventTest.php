@@ -38,5 +38,4 @@ class EventTest extends \PHPUnit_Framework_TestCase
         $event = new Event(new \DateTime('2013-01-08'), $sixDays);
         $this->assertTrue($event->isOverlapping($reference));
     }
-
 }
