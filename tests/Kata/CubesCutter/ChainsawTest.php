@@ -17,7 +17,7 @@ class ChainsawTest extends \PHPUnit_Framework_TestCase
 
     protected function start($fileName)
     {
-        $this->object->start(fopen(__DIR__.'/../../resources/CubesCutter/'.$fileName,'r'));
+        $this->object->start(fopen(__DIR__ . '/../../resources/CubesCutter/' . $fileName, 'r'));
     }
 
     /**
@@ -26,7 +26,7 @@ class ChainsawTest extends \PHPUnit_Framework_TestCase
     public function sample()
     {
         $this->start('sample.txt');
-        $this->assertEquals('1;17',$this->object->out());
+        $this->assertEquals('1;17', $this->object->out());
     }
 
     /**
@@ -35,7 +35,7 @@ class ChainsawTest extends \PHPUnit_Framework_TestCase
     public function onlyOnePiece()
     {
         $this->start('onlyOnePiece.txt');
-        $this->assertEquals('5;1',$this->object->out());
+        $this->assertEquals('5;1', $this->object->out());
     }
 
     /**
@@ -44,7 +44,7 @@ class ChainsawTest extends \PHPUnit_Framework_TestCase
     public function testVariousPieces()
     {
         $this->start('variousPieces.txt');
-        $this->assertEquals('4;112',$this->object->out());
+        $this->assertEquals('4;112', $this->object->out());
     }
 
     /**
@@ -53,7 +53,7 @@ class ChainsawTest extends \PHPUnit_Framework_TestCase
     public function aLotOfPieces()
     {
         $this->start('aLotOfPieces.txt');
-        $this->assertEquals('3;64772',$this->object->out());
+        $this->assertEquals('3;64772', $this->object->out());
     }
 
     /**
@@ -61,7 +61,7 @@ class ChainsawTest extends \PHPUnit_Framework_TestCase
      */
     public function wrongFormatEntry()
     {
-        $this->setExpectedException( 'Kata\\CubesCutter\\WrongUniverseException' );
+        $this->setExpectedException('Kata\\CubesCutter\\WrongUniverseException');
         $this->start('wrongFormatEntry.txt');
     }
 
@@ -71,6 +71,6 @@ class ChainsawTest extends \PHPUnit_Framework_TestCase
     public function gcdBetweenPiecesAreOne()
     {
         $this->start('gcdBetweenPiecesAreOne.txt');
-        $this->assertEquals('1;91',$this->object->out());
+        $this->assertEquals('1;91', $this->object->out());
     }
 }

@@ -13,7 +13,8 @@ class ParserTest extends \PHPUnit_Framework_TestCase
 
     protected function read($filename)
     {
-        return $this->parser->read(fopen(__DIR__.'/../../resources/'.$filename,'r'));
+        $filePath = __DIR__ . '/../../resources/' . $filename;
+        return $this->parser->read(fopen($filePath, 'r'));
     }
 
     /**
@@ -29,8 +30,8 @@ class ParserTest extends \PHPUnit_Framework_TestCase
      */
     public function oneValueOnFirstLineGetsAnArrayWithSimpleValue()
     {
-        $result=$this->read('oneValueOnFirstLine.txt');
-        $this->assertEquals(array('winter is coming'),$result[0]);
+        $result = $this->read('oneValueOnFirstLine.txt');
+        $this->assertEquals(array('winter is coming'), $result[0]);
     }
 
     /**
@@ -38,8 +39,8 @@ class ParserTest extends \PHPUnit_Framework_TestCase
      */
     public function severalValuesOnFirstLineGetsAnArrayWithSeveralValues()
     {
-        $result=$this->read('severalValuesOnFirstLine.txt');
-        $this->assertEquals(array('winter','is','coming'),$result[0]);
+        $result = $this->read('severalValuesOnFirstLine.txt');
+        $this->assertEquals(array('winter', 'is', 'coming'), $result[0]);
     }
 
 }
