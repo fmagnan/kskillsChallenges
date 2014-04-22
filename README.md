@@ -1,6 +1,7 @@
 # Coding Challenges
 
 [![Build Status](https://travis-ci.org/fmagnan/kskillsChallenges.png)](https://travis-ci.org/fmagnan/kskillsChallenges)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fmagnan/kskillsChallenges/badges/quality-score.png?s=1f27e4d945bf578416efecb0d71b67ccb1a4c8e1)](https://scrutinizer-ci.com/g/fmagnan/kskillsChallenges/)
 
 this project compiles challenges (and solutions) found on [kskills](http://www.kskills.com)
 
