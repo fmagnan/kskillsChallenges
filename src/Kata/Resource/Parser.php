@@ -20,4 +20,10 @@ class Parser
     {
         return implode(self::LINE_SEPARATOR, $line);
     }
+
+    public function skipFirstLine($lines)
+    {
+        array_shift($lines);
+        return $lines;
+    }
 }

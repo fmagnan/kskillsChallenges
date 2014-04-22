@@ -29,8 +29,12 @@ class Chainsaw
      */
     private function gcd($a, $b)
     {
-        if ($a == 0) return abs($b);
-        if ($b == 0) return abs($a);
+        if ($a == 0) {
+            return abs($b);
+        }
+        if ($b == 0) {
+            return abs($a);
+        }
         $r = $a % $b;
         return $this->gcd($b, $r);
     }
@@ -43,9 +47,12 @@ class Chainsaw
      */
     private function gcd_array($array)
     {
-        return array_reduce($array, function($result, $item) {
-            return $this->gcd($result, $item);
-        });
+        return array_reduce(
+            $array,
+            function ($result, $item) {
+                return $this->gcd($result, $item);
+            }
+        );
     }
 
     /**
@@ -55,30 +62,34 @@ class Chainsaw
 
     private function getPieceVolume(array $piece)
     {
-        return array_reduce($piece, function($result, $item) {
-            return $result * $item;
-        }, 1);
+        return array_reduce(
+            $piece,
+            function ($result, $item) {
+                return $result * $item;
+            },
+            1
+        );
     }
 
     public function start($stdin)
     {
         $lines = $this->parser->read($stdin);
-        $uselessFirstLine = array_shift($lines);
+        $lines = $this->parser->skipFirstLine($lines);
 
         $totalVolume = 0;
         $minimumCubeSides = array();
 
-        foreach($lines as $line) {
+        foreach ($lines as $line) {
             $woodPiece = array();
             foreach ($line as $dimension) {
-                $woodPiece[] = (int) $dimension;
+                $woodPiece[] = (int)$dimension;
             }
 
             if ($this->numberOfDimensions !== count($woodPiece)) {
-                throw new WrongUniverseException("This is not the universe that you are looking for");   
+                throw new WrongUniverseException("This is not the universe that you are looking for");
             }
 
-            $minimumCubeSides[ ] = $this->gcd_array($woodPiece);
+            $minimumCubeSides[] = $this->gcd_array($woodPiece);
             $totalVolume += $this->getPieceVolume($woodPiece);
         }
         $minimumCubeSide = $this->gcd_array($minimumCubeSides);
